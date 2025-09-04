@@ -1,17 +1,21 @@
 import streamlit as st
-from textblob import TextBlob
+import language_tool_python
 
-st.title("Grammar and Spelling Checker (TextBlob)")
+st.title("Improved Grammar and Spelling Checker (LanguageTool)")
 
-# Input text area
 input_text = st.text_area("Enter your text:", height=200)
 
-# Button to trigger correction
+tool = language_tool_python.LanguageTool('en-US')
+
 if st.button("Correct Grammar"):
     if input_text.strip() == "":
         st.warning("Please enter some text to correct.")
     else:
-        blob = TextBlob(input_text)
-        corrected = blob.correct()
+        # Check text with LanguageTool
+        matches = tool.check(input_text)
+        
+        # Apply corrections
+        corrected = language_tool_python.utils.correct(input_text, matches)
+        
         st.success("✅ Grammar and spelling corrected.")
-        st.text_area("Corrected Text:", value=str(corrected), height=200)
+        st.text_area("Corrected Text:", value=corrected, height=200)
