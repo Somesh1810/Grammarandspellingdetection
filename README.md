@@ -7,6 +7,14 @@
 [![Status](https://img.shields.io/badge/Project-Production%20Ready-success)]
 
 ---
+##  Live Application
+
+ Try the deployed app here:
+
+ https://grammarandspellingdetection1-4y36nhdvmkugejns2s2zk9.streamlit.app/
+
+> No installation required. Runs directly in the browser.
+
 
 ##  Project Summary
 
